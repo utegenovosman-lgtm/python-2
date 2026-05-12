@@ -1,2 +1,21 @@
 # python-2
 random password 2
+
+import random 
+import string
+
+def generate_password(length, use_digits = True, use_special = True):
+    chars = string.ascii_letters
+    if use_digits:
+        chars += string.digits
+    if use_special:
+        chars += string.punctuation
+
+    return ''.join(random.choice(chars) for _ in range(length))
+
+length = int(input("Длина паролья: "))
+use_digits = input("Добавить цифры? (y/n)").lower() == 'y'
+use_special = input("Добавить спецсиволы? (y/n)").lower() == 'y'
+
+print("Случайный пароль: ",generate_password(length, use_digits,use_special))
+
